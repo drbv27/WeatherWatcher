@@ -69,7 +69,7 @@ function consultarAPI(ciudad, pais) {
 }
 
 function showWeather(datos){
-    const {name, main: { temp, temp_max, temp_min, feels_like}, weather:{id, description, icon}} = datos;
+    const {name, main: { temp, temp_max, temp_min, feels_like}} = datos;
     const centigrados = kelvinACentigrados(temp);
     const max = kelvinACentigrados(temp_max);
     const min = kelvinACentigrados(temp_min);
@@ -95,10 +95,6 @@ function showWeather(datos){
     tempSensa.innerHTML = `Sensación Termica: ${sensacion} &#8451;`;
     tempSensa.classList.add('text-2xl');
 
-    const iconoC = document.createElement('p');
-    iconoC.innerHTML = ` ${icon}`;
-    /* tempSensa.classList.add('text-2xl'); */
-
     //recordemos que hay un selector resultado
     const resultadoDiv = document.createElement('div');
     resultadoDiv.classList.add('text-center', 'text-white');
@@ -107,7 +103,6 @@ function showWeather(datos){
     resultadoDiv.appendChild(tempMaxima);
     resultadoDiv.appendChild(tempMinima);
     resultadoDiv.appendChild(tempSensa);
-    resultadoDiv.appendChild(iconoC);
     
 
     resultado.appendChild(resultadoDiv);
